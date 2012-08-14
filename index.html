@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>dev.ode.la by ayush</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>dev.ode.la</h1>
+        <p>Documentation and samples for embedding ode.la's tools on third party sites</p>
+
+        <p class="view"><a href="https://github.com/ayush/ode-la-dev">View the Project on GitHub <small>ayush/ode-la-dev</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ayush/ode-la-dev/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ayush/ode-la-dev/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ayush/ode-la-dev">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>About</h3>
+
+<p><a href="http://ode.la">ode.la</a> is a community for creative writers. It also has an awesome writing app which acts as a muse and cures writers block. You can use the tool for free at ode.la. You can also embed the ode.la's creative writing tool on your site but Embedding that is a paid service. </p>
+
+<p>Here you'll find instructions, documentation and samples to embed ode.la's writing app on your site. </p>
+
+<h3>Getting an api key</h3>
+
+<p>Before you proceed, you'll need an api-key from ode.la. You can contact Ayush Gupta (<a href="https://github.com/ayush" class="user-mention">@ayush</a>). Send an email describing who you are and how you wise to use this</p>
+
+<h3>Prerequisites</h3>
+
+<p>The only dependency is jquery. You must include it as below</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<h3>Embedding</h3>
+
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+<span class="kd">function</span> <span class="nx">odelaInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span><span class="nx">apiKey</span><span class="o">:</span><span class="s1">'[your-api-key]'</span><span class="p">,</span> <span class="nx">service</span><span class="o">:</span> <span class="nx">serviceUrl</span><span class="p">,</span> <span class="nx">callback</span><span class="o">:</span> <span class="nx">odelaReady</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">odelaReady</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">'zingo bars'</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'the snack which makes you go whack'</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="o">!</span><span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span><span class="kd">var</span> <span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'odela-muse'</span><span class="p">)){</span><span class="nx">js</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span><span class="nx">js</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s1">'odela-muse'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">'http://embed.ode.la/muse.min.js'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">callback</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'complete'</span><span class="o">||</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'loaded'</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="nx">callback</span><span class="p">()}};</span><span class="nx">fjs</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="p">)}}(</span><span class="nx">odelaInit</span><span class="p">);</span>
+
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h3>Support or Contact</h3>
+
+<p>Having trouble? Check out the documentation at <a href="https://github.com/ayush/ode-la-developer">https://github.com/ayush/ode-la-developer</a> or contact Ayush (<a href="https://github.com/ayush" class="user-mention">@ayush</a>) or Sreejith (<a href="https://github.com/sreejithp" class="user-mention">@sreejithp</a>) and we’ll help you sort it out.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ayush">ayush</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
