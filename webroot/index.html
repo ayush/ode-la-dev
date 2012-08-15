@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+    <!-- for styling this example -->
+    <style src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css'></style>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function(){
+            // Call to open app without any pre-populated content
+            // its simply a call to odela.muse.open({..})
+            $('#btn-write-now').click(function() {
+
+                // The function which gets called when user either cancels or saves
+                function onUserResponse(data) {
+                    // if saved flag is true then user clicked save, or else it was a cancel
+                    if(data.saved) {
+                        var c = 'content: ' + data.content + '<br><br>' + 'title: ' + data.title;
+                        $('#user-response').html(c);
+                    } else 
+                        if(window.console) console.log('user cancelled after writing "' + data.content + '" and title "' + data.title + '"');
+                }
+
+                // clearing the area where this example shows the user response
+                $('#user-response').html('');
+
+                // call to open app. The only argument is the response handler
+                odela.muse.open({callback: onUserResponse});
+            });
+
+            // Call to open app pre-populated with content from the text area
+            $('#btn-continue-writing').click(function() {
+
+                // The function which gets called when user either cancels or saves
+                function onUserResponse(data) {
+                    // if saved flag is true then user clicked save, or else it was a cancel
+                    if(data.saved) {
+                        $('#textarea-content').val(data.content);
+                        $('#textarea-content').focus()
+                    } else 
+                        if(window.console) console.log('user cancelled after writing "' + data.content + '" and title "' + data.title + '"');
+                }
+
+                // Call to open app, passing in the content and response handler
+                odela.muse.open({content: $('#textarea-content').val(), callback: onUserResponse});
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+    <div class="container">
+        <div class='span5'>
+            <div class="page-header">
+                <h1>Blank<small>&nbsp;&nbsp;click to write from scratch</small></h1>
+            </div>
+            
+            <button id='btn-write-now' class="btn btn-large btn-primary">Write Now</button>
+
+            <pre id='user-response' style='margin-top: 15px;'>
+                &nbsp;
+            </pre>
+
+        </div>
+
+        <div class='span2'>&nbsp;</div>
+
+        <div class='span5'>
+            <div class="page-header">
+                <h1>Existing<small>&nbsp;&nbsp;click to pre-populate</small></h1>
+            </div>
+
+            <textarea id='textarea-content' class="input-xlarge" style='width:100%; height: 100px' id="textarea" rows="3">in the valley of shadows she shines like a blinding light</textarea>
+            <br>
+            
+            <button id='btn-continue-writing' class="btn btn-large btn-primary">Continue Writing</button>
+        </div>
+    </div>
+
+    <script>
+
+        // gets called back to let you know ode.la is ready
+        // its optional to pass this callback to odela.muse.init
+        // you'd only need it if your page needs to immediately open the ode.la app.
+        function odelaReady() {
+            if(console.log) console.log('ode.muse ready');
+            
+        }
+
+        // gets called back to let you know that odela.muse is now availble to initialize
+        // simply call odela.muse.init({...}) passing in the apiKey, service, callback and a debug flag
+        function odelaInit() {
+            odela.muse.init({apiKey:'[your-api-key]', callback: odelaReady});
+        }
+
+        // standard ode.la include snipped which takes 'odelaInit' as a param
+        !function (callback) {
+            var js, fjs = document.getElementsByTagName('script')[0];
+            if (!document.getElementById('odela-muse')) {
+                js = document.createElement('script');
+                js.id = 'odela-muse';
+                js.src = 'http://embed.ode.la/muse.min.js';
+
+                js.onload = callback;
+                js.onreadystatechange = function () { // Same thing but for IE
+                    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                        if (callback) callback();
+                    }
+                };
+
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(odelaInit);</script>
+
+</body>
+</html>
