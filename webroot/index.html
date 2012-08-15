@@ -28,6 +28,9 @@
                 // clearing the area where this example shows the user response
                 $('#user-response').html('');
 
+                //
+                // STEP 3 - Open odela.muse prompting the user to enter some text
+                // 
                 // call to open app. The only argument is the response handler
                 odela.muse.open({callback: onUserResponse});
             });
@@ -45,6 +48,9 @@
                         if(window.console) console.log('user cancelled after writing "' + data.content + '" and title "' + data.title + '"');
                 }
 
+                //
+                // STEP 4 - Open odela.muse pre-populated with some text, perhaps to let a user continue testing
+                // 
                 // Call to open app, passing in the content and response handler
                 odela.muse.open({content: $('#textarea-content').val(), callback: onUserResponse});
             });
@@ -85,6 +91,10 @@
 
     <script>
 
+
+        //
+        // STEP 2 - Optionally ensure when odela.muse is ready
+        // 
         // gets called back to let you know ode.la is ready
         // its optional to pass this callback to odela.muse.init
         // you'd only need it if your page needs to immediately open the ode.la app.
@@ -93,6 +103,9 @@
             
         }
 
+        //
+        // STEP 1 - Call odela.muse.init()
+        // 
         // gets called back to let you know that odela.muse is now availble to initialize
         // simply call odela.muse.init({...}) passing in the apiKey, service, callback and a debug flag
         function odelaInit() {
