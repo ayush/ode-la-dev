@@ -34,13 +34,15 @@
 
 <p>Here you'll find instructions, documentation and samples to embed ode.la's writing app on your site. </p>
 
+<p>This guide gives details on how to embed ode.la but it is highly recommended that you clone the repo <a href="https://github.com/ayush/ode-la-dev">https://github.com/ayush/ode-la-dev</a>. Once you've finished reading this, look at the samples there and use them as a starting point. </p>
+
 <h3>Getting an api key</h3>
 
 <p>Before you proceed, you'll need an api-key from ode.la. You can contact Ayush Gupta (<a href="https://github.com/ayush" class="user-mention">@ayush</a>). Send an email describing who you are and how you wise to use this</p>
 
 <h3>Prerequisites</h3>
 
-<p>The only dependency is jquery. You must include it as below</p>
+<p>The only dependency is jquery 1.7.2. You must include it as below</p>
 
 <div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
@@ -53,7 +55,7 @@
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">odelaReady</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">'zingo bars'</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'the snack which makes you go whack'</span><span class="p">});</span>
+    <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">'melt'</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'in the valley of shadows she shines like a blinding light'</span><span class="p">});</span>
 <span class="p">}</span>
 
 <span class="o">!</span><span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span><span class="kd">var</span> <span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'odela-muse'</span><span class="p">)){</span><span class="nx">js</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span><span class="nx">js</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s1">'odela-muse'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">'http://embed.ode.la/muse.min.js'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">callback</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'complete'</span><span class="o">||</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'loaded'</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="nx">callback</span><span class="p">()}};</span><span class="nx">fjs</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="p">)}}(</span><span class="nx">odelaInit</span><span class="p">);</span>
@@ -61,7 +63,55 @@
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
+<h3>API</h3>
+
+<h4>odela.muse.init()</h4>
+
+<div class="highlight"><pre><span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="c1">// required</span>
+    <span class="nx">apiKey</span><span class="o">:</span><span class="s1">'[your-api-key]'</span><span class="p">,</span>  
+
+    <span class="c1">// optional: use this to know when odela.muse is ready</span>
+    <span class="nx">callback</span><span class="o">:</span> <span class="nx">odelaReady</span><span class="p">,</span> 
+
+    <span class="c1">// optional: use this to point to a different server</span>
+    <span class="nx">service</span><span class="o">:</span> <span class="s1">'http://embed.ode.la'</span><span class="p">,</span> 
+
+    <span class="c1">// optional: enables debug mode which loads non minified scripts and shows debug messages</span>
+    <span class="nx">debug</span><span class="o">:</span> <span class="kc">true</span> 
+<span class="p">})</span>
+</pre></div>
+
+<h4>odela.muse.open()</h4>
+
+<div class="highlight"><pre><span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="c1">// optional: when present populates the title</span>
+    <span class="nx">title</span><span class="o">:</span><span class="s1">'some title'</span><span class="p">,</span>  
+
+    <span class="c1">// optional: pre populates app with content and shows it on launch</span>
+    <span class="c1">// if not provided, it shows blank app promoting the user to write something</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="s1">'some existing content'</span><span class="p">,</span>
+
+    <span class="c1">// optional: for more details see below</span>
+    <span class="c1">// when user clicks save or closes the app, it calls back this function</span>
+    <span class="nx">callback</span><span class="o">:</span> <span class="nx">someFunction</span>
+<span class="p">})</span>
+</pre></div>
+
+<h4>callback param in odela.muse.open()</h4>
+
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">onUserResponse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// if saved flag is true then user clicked save, or else it was a cancel</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">saved</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">userEnteredContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">userEnteredTitle</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 <h3>Support or Contact</h3>
+
+<p>This has been tested in IE9, Chrome, Firefox 14.0.1 and Safari 6.</p>
 
 <p>Having trouble? Check out the documentation at <a href="https://github.com/ayush/ode-la-developer">https://github.com/ayush/ode-la-developer</a> or contact Ayush (<a href="https://github.com/ayush" class="user-mention">@ayush</a>) or Sreejith (<a href="https://github.com/sreejithp" class="user-mention">@sreejithp</a>) and we’ll help you sort it out.</p>
       </section>
