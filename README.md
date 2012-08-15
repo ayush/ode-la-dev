@@ -6,6 +6,6 @@ Read the [Introduction] (http://ayush.github.com/ode-la-dev/)
 ### Then
 * Clone the repo
 * Edit webroot/index.html and replace [your-api-key] with your api-key
-* Run bin/run.sh
+* Run bin/run.sh or .\bin\run.bat
 * Open a browser at http://localhost:8080/
 
