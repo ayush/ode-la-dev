@@ -38,7 +38,7 @@
 
 <h3>Getting an api key</h3>
 
-<p>Before you proceed, you'll need an api-key from ode.la. You can contact Ayush Gupta (<a href="https://github.com/ayush" class="user-mention">@ayush</a>). Send an email describing who you are and how you wise to use this</p>
+<p>Before you proceed, you'll need an api-key from ode.la. You can contact Ayush Gupta (<a href="https://github.com/ayush" class="user-mention">@ayush</a>). Send an email describing who you are and how you wish to use this</p>
 
 <h3>Prerequisites</h3>
 
@@ -50,6 +50,10 @@
 <h3>Embedding</h3>
 
 <div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+<span class="o">!</span><span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+<span class="kd">var</span> <span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'odela-muse'</span><span class="p">)){</span><span class="nx">js</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span><span class="nx">js</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s1">'odela-muse'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">'http://embed.ode.la/muse.min.js'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">callback</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'complete'</span><span class="o">||</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'loaded'</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="nx">callback</span><span class="p">()}};</span><span class="nx">fjs</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="p">)}</span>
+<span class="p">}(</span><span class="nx">odelaInit</span><span class="p">);</span>
+
 <span class="kd">function</span> <span class="nx">odelaInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span><span class="nx">apiKey</span><span class="o">:</span><span class="s1">'[your-api-key]'</span><span class="p">,</span> <span class="nx">service</span><span class="o">:</span> <span class="nx">serviceUrl</span><span class="p">,</span> <span class="nx">callback</span><span class="o">:</span> <span class="nx">odelaReady</span><span class="p">});</span>
 <span class="p">}</span>
@@ -58,14 +62,14 @@
     <span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">'melt'</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'in the valley of shadows she shines like a blinding light'</span><span class="p">});</span>
 <span class="p">}</span>
 
-<span class="o">!</span><span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span><span class="kd">var</span> <span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'odela-muse'</span><span class="p">)){</span><span class="nx">js</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span><span class="nx">js</span><span class="p">.</span><span class="nx">id</span><span class="o">=</span><span class="s1">'odela-muse'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s1">'http://embed.ode.la/muse.min.js'</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">callback</span><span class="p">;</span><span class="nx">js</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'complete'</span><span class="o">||</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="s1">'loaded'</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="nx">callback</span><span class="p">()}};</span><span class="nx">fjs</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span><span class="nx">fjs</span><span class="p">)}}(</span><span class="nx">odelaInit</span><span class="p">);</span>
-
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
 <h3>API</h3>
 
 <h4>odela.muse.init()</h4>
+
+<p>This must be called (once) to initialize odela.muse. It supports the following parameters:</p>
 
 <div class="highlight"><pre><span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
     <span class="c1">// required</span>
@@ -84,6 +88,8 @@
 
 <h4>odela.muse.open()</h4>
 
+<p>This is called to open odela.muse app. It supports the following parameters:</p>
+
 <div class="highlight"><pre><span class="nx">odela</span><span class="p">.</span><span class="nx">muse</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
     <span class="c1">// optional: when present populates the title</span>
     <span class="nx">title</span><span class="o">:</span><span class="s1">'some title'</span><span class="p">,</span>  
@@ -98,9 +104,15 @@
 <span class="p">})</span>
 </pre></div>
 
-<h4>callback param in odela.muse.open()</h4>
+<h5>callback param in odela.muse.open()</h5>
+
+<p>This is a parameter to odela.open.muse(). Its a function which received the text that a user entered after a user closes the odela muse app by clicking save or cancel/close. </p>
 
 <div class="highlight"><pre><span class="kd">function</span> <span class="nx">onUserResponse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// data.saved: true if user clicked save. false if user canceled/closed odela muse.</span>
+    <span class="c1">// data.content: content entered by user</span>
+    <span class="c1">// data.title: title entered by user</span>
+
     <span class="c1">// if saved flag is true then user clicked save, or else it was a cancel</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">saved</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">userEnteredContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
@@ -108,6 +120,10 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+
+<h4>odela.muse.close()</h4>
+
+<p>This can be called to force the odela.muse app to close. </p>
 
 <h3>Support or Contact</h3>
 
